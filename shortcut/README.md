@@ -2,6 +2,20 @@
 
 This guide explains how to create an iOS Shortcut that logs expenses to your spendlocal server.
 
+## Quick Start: Import Template
+
+**[Download the Shortcut](https://www.icloud.com/shortcuts/aa76f6b0432a4a67bd8f90920a1c3c3c)**
+
+After importing:
+1. Open the shortcut in edit mode
+2. Find the "Get Contents of URL" action
+3. Replace `YOUR_SERVER_IP` with your Tailscale IP (e.g., `100.x.x.x`)
+4. Done
+
+## Manual Setup
+
+If you prefer to build it yourself, follow the steps below.
+
 ## Prerequisites
 
 - Tailscale installed on both your iPhone and server
