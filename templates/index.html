@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spendlocal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>EXPENSE TRACKER</h1>
+        <span class="month">{{ month }}</span>
+    </header>
+
+    <main>
+        <section class="totals">
+            <div class="total-card total">
+                <span class="label">SPENT THIS MONTH</span>
+                <span class="tag">TOTAL</span>
+                <span class="amount">€{{ "%.2f"|format(total) }}</span>
+            </div>
+            <div class="total-card card-payments">
+                <span class="label">CARD PAYMENTS</span>
+                <span class="tag">CARD</span>
+                <span class="amount">€{{ "%.2f"|format(card) }}</span>
+            </div>
+            <div class="total-card cash-payments">
+                <span class="label">CASH PAYMENTS</span>
+                <span class="tag">CASH</span>
+                <span class="amount">€{{ "%.2f"|format(cash) }}</span>
+            </div>
+        </section>
+
+        <section class="recent">
+            <div class="recent-header">
+                <h2>RECENT EXPENSES</h2>
+                <span class="count">{{ count }} entries</span>
+            </div>
+            <ul class="expense-list">
+                {% for expense in expenses %}
+                <li class="expense-item {% if loop.index is odd %}odd{% endif %}">
+                    <span class="date">{{ expense.date[8:10] }}</span>
+                    <span class="title">{{ expense.title }}</span>
+                    <span class="expense-amount">€{{ "%.2f"|format(expense.amount) }}</span>
+                    <span class="account {{ expense.account|lower }}">{{ expense.account|upper }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://github.com/rogi2709/spendlocal">spendlocal</a> — your money, your data, your server
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[Unit]
+Description=spendlocal - Privacy-first expense tracker
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/home/YOUR_USERNAME/spendlocal
+ExecStart=/home/YOUR_USERNAME/spendlocal/.venv/bin/python app.py
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
